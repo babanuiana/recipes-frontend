@@ -6,7 +6,17 @@
 
 <script setup lang="ts">
 type Props = {
-  tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "div";
+  tag?:
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "p"
+    | "label"
+    | "span"
+    | "div";
   variant:
     | "heading-01"
     | "heading-01-semibold"
@@ -38,7 +48,8 @@ type Props = {
     | "neutral-07"
     | "neutral-08"
     | "primary-01"
-    | "primary-02";
+    | "primary-02"
+    | "error-01";
 };
 
 withDefaults(defineProps<Props>(), {
@@ -102,6 +113,10 @@ withDefaults(defineProps<Props>(), {
 
 .primary-02 {
   color: $color-primary-02;
+}
+
+.error-01 {
+  color: $color-error-02;
 }
 
 .heading-01 {

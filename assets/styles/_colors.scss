@@ -12,18 +12,27 @@ $color-neutral-06: #b0b0b0;
 $color-neutral-07: #717171;
 $color-neutral-08: #5e5e5e;
 
-$color-primary-01: #F6475F;
-$color-primary-02: #FF385C;
+$color-primary-01: #f6475f;
+$color-primary-02: #ff385c;
+$color-primary-03: #eb4c60;
 
-$color-gradient-01: #EB4C60;
-$color-gradient-02: radial-gradient(1413.54% 103.95% at -3.95% 100%, #D33753 0%, #D13660 52.83%, #C72D65 100%);
-$color-gradient-03: radial-gradient(12158.65% 140.68% at 99.42% 0%, #C72D65 0%, #D23760 48.44%, #D23755 100%);
+$color-gradient-02: linear-gradient(
+  135deg,
+  rgba(211, 55, 83, 1) 0%,
+  rgba(206, 51, 91, 1) 58%,
+  rgba(199, 45, 101, 1) 100%
+);
+$color-gradient-03: linear-gradient(
+  135deg,
+  rgb(198, 52, 79) 0%,
+  rgb(183, 43, 94) 100%
+);
 
-$color-error-01: #FEF8F6;
-$color-error-02: #C13515;
+$color-error-01: #fef8f6;
+$color-error-02: #c13515;
 
-$color-accent-01: #F6D7DF;
-$color-accent-02: #D03660;
+$color-accent-01: #f6d7df;
+$color-accent-02: #d03660;
 
-$color-discount: #008A05;
-$color-link: #004CC4;
+$color-discount: #008a05;
+$color-link: #004cc4;

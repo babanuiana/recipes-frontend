@@ -21,10 +21,11 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@pinia/nuxt",
     "@nuxtjs/google-fonts",
+    "nuxt-icon",
   ],
   googleFonts: {
     families: {
-      Poppins: {
+      Onest: {
         wght: [400, 500, 600],
       },
     },

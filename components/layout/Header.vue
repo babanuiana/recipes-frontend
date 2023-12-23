@@ -1,4 +1,3 @@
-import type { SignInButton } from '#build/components';
 <template>
   <header class="header">
     <LayoutContainer>
@@ -10,7 +9,7 @@ import type { SignInButton } from '#build/components';
           >
         </NuxtLink>
         <div class="actions">
-          <SignInButton />
+          <AuthButton v-if="!authStore.isAuthenticated" />
         </div>
       </div>
     </LayoutContainer>
@@ -19,6 +18,12 @@ import type { SignInButton } from '#build/components';
     <BaseDivider />
   </div>
 </template>
+
+<script setup lang="ts">
+import { useAuthStore } from "~/stores/auth";
+
+const authStore = useAuthStore();
+</script>
 
 <style lang="scss" scoped>
 .header {

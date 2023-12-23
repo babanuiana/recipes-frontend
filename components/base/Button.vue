@@ -11,11 +11,14 @@ type Props = {
   variant: "primary" | "secondary" | "tertiary";
   size: "small" | "full-width";
   disabled?: boolean;
+  type?: "button" | "submit" | "reset";
 };
 
 const props = withDefaults(defineProps<Props>(), {
   variant: "primary",
   size: "small",
+  disabled: false,
+  type: "button",
 });
 
 const textColor = computed(() => {
@@ -54,7 +57,7 @@ const textVariant = computed(() => {
     background-color 0.2s ease-in-out,
     transform 0.2s ease-in-out;
 
-  &:active {
+  &:active:not(:disabled) {
     transform: scale(0.9);
   }
 }

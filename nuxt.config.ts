@@ -23,12 +23,18 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "nuxt-icon",
     "@pinia/nuxt",
+    "@nuxt/image",
   ],
   googleFonts: {
     families: {
       Onest: {
         wght: [400, 500, 600],
       },
+    },
+  },
+  image: {
+    cloudinary: {
+      baseURL: "https://res.cloudinary.com/denisveleaev/image/upload/",
     },
   },
 });

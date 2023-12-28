@@ -13,10 +13,11 @@
         </div>
       </div>
     </LayoutContainer>
+    <div class="divider">
+      <BaseDivider />
+    </div>
+    <slot />
   </header>
-  <div class="divider">
-    <BaseDivider />
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -28,6 +29,10 @@ const authStore = useAuthStore();
 <style lang="scss" scoped>
 .header {
   background-color: $color-shade-01;
+  box-shadow: 0 -6px 8px 4px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
 .content {

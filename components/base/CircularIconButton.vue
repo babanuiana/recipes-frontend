@@ -72,7 +72,7 @@ const iconSize = computed(() => {
 .primary {
   background-color: $color-shade-01;
   color: $color-shade-02;
-  border: 1px solid $color-shade-02;
+  border: 1px solid $color-neutral-06;
 
   &:hover {
     background-color: $color-shade-02;

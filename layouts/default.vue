@@ -1,8 +1,13 @@
 <template>
   <div class="container">
-    <LayoutHeader />
-    <main>
+    <div>
       <slot />
-    </main>
+    </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.container {
+  position: relative;
+}
+</style>

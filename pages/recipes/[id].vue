@@ -63,15 +63,44 @@
                   variant="body-03"
                   class="ingredient-name"
                 >
-                  {{ ingredient.description }} -
+                  {{ ingredient.description }}
                 </BaseTypography>
                 <BaseTypography
+                  v-if="ingredient.quantity && ingredient.unit"
                   tag="span"
                   variant="body-04"
                   color="neutral-08"
                   class="ingredient-quantity"
                 >
-                  {{ ingredient.quantity }} {{ ingredient.unit }}
+                  {{ ` — ${ingredient.quantity} ${ingredient.unit}` }}
+                </BaseTypography>
+              </li>
+            </ul>
+          </div>
+          <div class="steps-section">
+            <BaseTypography
+              tag="h2"
+              variant="body-01-semibold"
+              class="steps-heading"
+            >
+              Процесс приготовления
+            </BaseTypography>
+            <ul class="steps-list">
+              <li
+                v-for="(step, index) in data.steps"
+                :key="step + index"
+                class="step"
+              >
+                <BaseTypography
+                  tag="span"
+                  variant="micro-01"
+                  color="shade-01"
+                  class="step-number"
+                >
+                  {{ index }}
+                </BaseTypography>
+                <BaseTypography tag="p" variant="body-03" class="step-text">
+                  {{ step }}
                 </BaseTypography>
               </li>
             </ul>
@@ -136,7 +165,7 @@ const characteristicsText = computed(() =>
 }
 
 .description {
-  margin-bottom: $spacing-5;
+  margin-bottom: $spacing-8;
 }
 
 .characteristics-wrapper-mobile {
@@ -147,7 +176,7 @@ const characteristicsText = computed(() =>
   border: 1px solid $color-neutral-05;
   border-radius: 12px;
   padding: $spacing-4 $spacing-5;
-  margin-bottom: $spacing-5;
+  margin-bottom: $spacing-8;
 
   @media screen and (min-width: $medium-screen) {
     display: none;
@@ -177,23 +206,67 @@ const characteristicsText = computed(() =>
 }
 
 .ingredients-section {
-  margin-bottom: $spacing-5;
+  margin-bottom: $spacing-14;
+  padding: $spacing-5 $spacing-5 $spacing-8;
+  box-shadow: $elevation-02;
+  border-radius: 12px;
 }
 
 .ingredients-heading {
-  margin-bottom: $spacing-3;
+  margin-bottom: $spacing-4;
 }
 
 .ingredients-list {
+  display: inline-flex;
+  flex-direction: column;
+  gap: $spacing-2;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.ingredient {
+.steps-section {
+  margin-bottom: $spacing-20;
+}
+
+.steps-heading {
+  margin-bottom: $spacing-6;
+}
+
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-10;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.step {
+  display: flex;
+  gap: $spacing-5;
+  align-items: baseline;
+  background: $color-neutral-01;
+  padding: $spacing-5;
+  border-radius: 12px;
+  position: relative;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: $color-primary-01;
+  box-shadow: $elevation-02;
   display: flex;
   align-items: center;
-  gap: $spacing-2;
-  margin-bottom: $spacing-2;
+  justify-content: center;
+  position: absolute;
+  top: -12px;
+  left: -14px;
+}
+
+.step-text {
+  flex: 1;
 }
 </style>

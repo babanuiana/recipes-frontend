@@ -97,7 +97,7 @@
                   color="shade-01"
                   class="step-number"
                 >
-                  {{ index }}
+                  {{ index + 1 }}
                 </BaseTypography>
                 <BaseTypography tag="p" variant="body-03" class="step-text">
                   {{ step }}
@@ -127,16 +127,15 @@ const { data, status } = useFetch<Recipe>(
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    key: `recipe-${params.id}-token-${token}`,
   }
 );
 
 const characteristicsText = computed(() =>
   [
     data.value?.recipeIngredients.length &&
-      `${data.value?.recipeIngredients.length} ingredients`,
+      `${data.value?.recipeIngredients.length} ингридиентов`,
     data.value?.timeToCookInMinutes &&
-      `${data.value?.timeToCookInMinutes} minutes`,
+      `${data.value?.timeToCookInMinutes} минут`,
   ]
     .filter(Boolean)
     .join(" • ")

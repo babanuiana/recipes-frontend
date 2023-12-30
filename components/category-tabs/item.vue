@@ -39,8 +39,12 @@ withDefaults(defineProps<Props>(), {
   }
 
   &.active {
-    color: $color-shade-02;
+    color: $color-primary-01;
     border-bottom: 2px solid $color-shade-02;
+
+    .title {
+      color: $color-shade-02;
+    }
   }
 }
 

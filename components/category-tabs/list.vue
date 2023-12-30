@@ -16,6 +16,11 @@
 import SaladIcon from "./icon/salad";
 import SauceIcon from "./icon/sauce";
 import PastaIcon from "./icon/pasta";
+import SoupIcon from "./icon/soup";
+import AppetizerIcon from "./icon/appetizer";
+import MexicanIcon from "./icon/mexican";
+import SushiIcon from "./icon/sushi";
+import PizzaIcon from "./icon/pizza";
 
 const route = useRoute();
 
@@ -37,6 +42,36 @@ const CATEGORIES = [
     title: "Паста",
     icon: PastaIcon,
     category: "pasta",
+  },
+  {
+    id: 4,
+    title: "Супы",
+    icon: SoupIcon,
+    category: "soup",
+  },
+  {
+    id: 5,
+    title: "Закуски",
+    icon: AppetizerIcon,
+    category: "appetizer",
+  },
+  {
+    id: 6,
+    title: "Мексиканские",
+    icon: MexicanIcon,
+    category: "mexican",
+  },
+  {
+    id: 7,
+    title: "Суши",
+    icon: SushiIcon,
+    category: "sushi",
+  },
+  {
+    id: 8,
+    title: "Пицца",
+    icon: PizzaIcon,
+    category: "pizza",
   },
 ];
 </script>

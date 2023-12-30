@@ -32,9 +32,9 @@ const props = defineProps<{
 const characteristicsText = computed(() =>
   [
     props.recipe.recipeIngredients.length &&
-      `${props.recipe.recipeIngredients.length} ingredients`,
+      `${props.recipe.recipeIngredients.length} ингридиентов`,
     props.recipe.timeToCookInMinutes &&
-      `${props.recipe.timeToCookInMinutes} minutes`,
+      `${props.recipe.timeToCookInMinutes} минут`,
   ]
     .filter(Boolean)
     .join(" • ")

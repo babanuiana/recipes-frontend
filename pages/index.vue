@@ -5,13 +5,30 @@
     </LayoutHeader>
     <main class="content-container">
       <LayoutContainer>
-        <RecipesListGrid v-if="data">
-          <RecipesListItem
-            v-for="recipe in data"
-            :key="recipe.id"
-            :recipe="recipe"
-          />
-        </RecipesListGrid>
+        <div v-if="data && status === 'success'" class="grid-wrapper">
+          <div class="grid-header">
+            <BaseTypography
+              tag="h1"
+              variant="heading-01-semibold"
+              class="heading"
+            >
+              Рецепты
+            </BaseTypography>
+            <div class="recipes-actions">
+              <!-- <BaseChip>
+                <template #icon><Icon name="ion:filter" /></template>
+                <span>Фильтр</span>
+              </BaseChip> -->
+            </div>
+          </div>
+          <RecipesListGrid>
+            <RecipesListItem
+              v-for="recipe in data"
+              :key="recipe.id"
+              :recipe="recipe"
+            />
+          </RecipesListGrid>
+        </div>
         <LayoutPageLoader v-else />
       </LayoutContainer>
     </main>
@@ -29,8 +46,7 @@ const category = computed(
   () => route.query.category?.toString()?.toUpperCase()
 );
 
-const { data } = useFetch<Recipe[]>("http://localhost:4000/recipes", {
-  key: `recipes-${category}-token-${token}`,
+const { data, status } = useFetch<Recipe[]>("http://localhost:4000/recipes", {
   query: {
     category,
   },
@@ -43,5 +59,25 @@ const { data } = useFetch<Recipe[]>("http://localhost:4000/recipes", {
 <style lang="scss" scoped>
 .content-container {
   padding: $spacing-8 0 $spacing-16;
+}
+
+.grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+}
+
+.grid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-4;
+  flex-wrap: wrap;
+}
+
+.recipes-actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
 }
 </style>

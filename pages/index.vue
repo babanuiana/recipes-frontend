@@ -46,14 +46,17 @@ const category = computed(
   () => route.query.category?.toString()?.toUpperCase()
 );
 
-const { data, status } = useFetch<Recipe[]>("http://localhost:4000/recipes", {
-  query: {
-    category,
-  },
-  headers: {
-    Authorization: `Bearer ${token}`,
-  },
-});
+const { data, status } = useFetch<Recipe[]>(
+  "https://iana-recipes-bdbe797be68c.herokuapp.com/recipes",
+  {
+    query: {
+      category,
+    },
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 </script>
 
 <style lang="scss" scoped>

@@ -122,7 +122,7 @@ const { params } = useRoute();
 const { token } = useAuthStore();
 
 const { data, status } = useFetch<Recipe>(
-  `https://iana-recipes-bdbe797be68c.herokuapp.com/${params.id}`,
+  `https://iana-recipes-bdbe797be68c.herokuapp.com/recipes/${params.id}`,
   {
     headers: {
       Authorization: `Bearer ${token}`,

@@ -33,6 +33,7 @@ const authStore = useAuthStore();
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 10;
 }
 
 .content {

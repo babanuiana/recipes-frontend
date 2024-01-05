@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
 
-const SIGN_IN_URL = "https://iana-recipes-bdbe797be68c.herokuapp.com/sign-in";
-const SIGN_UP_URL = "https://iana-recipes-bdbe797be68c.herokuapp.com/sign-up";
-const CURRENT_USER_URL = "https://iana-recipes-bdbe797be68c.herokuapp.com/me";
+const SIGN_IN_URL = "https://iana-recipes-bdbe797be68c.herokuapp.com/authentication/sign-in";
+const SIGN_UP_URL = "https://iana-recipes-bdbe797be68c.herokuapp.com/authentication/sign-up";
+const CURRENT_USER_URL = "https://iana-recipes-bdbe797be68c.herokuapp.com/authentication/me";
 const STORE_KEY = "auth";
 const COOKIE_KEY = "auth_token";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year

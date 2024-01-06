@@ -10,19 +10,13 @@
         >{{ label }}</BaseTypography
       >
     </div>
-    <input
+    <textarea
       v-bind="$attrs"
       :id="id"
       :value="modelValue"
-      :type="type"
-      :class="['input', { error: status === 'error', 'with-label': label }]"
+      :class="['textarea', { error: status === 'error', 'with-label': label }]"
       @input="
-        $emit(
-          'update:modelValue',
-          type !== 'file'
-            ? ($event.target as HTMLInputElement)?.value
-            : ($event.target as HTMLInputElement)?.files?.[0]
-        )
+        $emit('update:modelValue', ($event.target as HTMLInputElement)?.value)
       "
     />
     <BaseTypography
@@ -47,8 +41,7 @@ type Props = {
   helperText?: string;
   status?: "default" | "error";
   errorMessage?: string;
-  type?: "text" | "number" | "password" | "file" | "email";
-  modelValue?: string | number | File;
+  modelValue?: string;
 };
 
 defineEmits(["update:modelValue"]);
@@ -59,7 +52,6 @@ withDefaults(defineProps<Props>(), {
   helperText: undefined,
   status: "default",
   errorMessage: undefined,
-  type: "text",
 });
 </script>
 
@@ -71,7 +63,7 @@ withDefaults(defineProps<Props>(), {
   gap: $spacing-3;
 }
 
-.input {
+.textarea {
   display: inline-flex;
   width: 100%;
   border-radius: 8px;
@@ -85,6 +77,7 @@ withDefaults(defineProps<Props>(), {
     border-color 0.2s ease-in-out,
     border-color 0.2s ease-in-out;
   outline: none;
+  resize: vertical;
 
   &::placeholder {
     font: $font-body-02;

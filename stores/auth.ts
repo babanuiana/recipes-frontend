@@ -1,8 +1,5 @@
 import { defineStore } from "pinia";
 
-const SIGN_IN_URL = "https://iana-recipes-bdbe797be68c.herokuapp.com/authentication/sign-in";
-const SIGN_UP_URL = "https://iana-recipes-bdbe797be68c.herokuapp.com/authentication/sign-up";
-const CURRENT_USER_URL = "https://iana-recipes-bdbe797be68c.herokuapp.com/authentication/me";
 const STORE_KEY = "auth";
 const COOKIE_KEY = "auth_token";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
@@ -20,6 +17,12 @@ type AuthResponseData = {
 } & User;
 
 export const useAuthStore = defineStore(STORE_KEY, () => {
+  const baseURL = useBaseUrl();
+
+  const SIGN_IN_URL = `${baseURL}/authentication/sign-in`;
+  const SIGN_UP_URL = `${baseURL}/authentication/sign-up`;
+  const CURRENT_USER_URL = `${baseURL}/authentication/me`;
+
   const token = useCookie(COOKIE_KEY, {
     maxAge: COOKIE_MAX_AGE,
   });
@@ -86,19 +89,30 @@ export const useAuthStore = defineStore(STORE_KEY, () => {
     return { data, error, status };
   };
 
-  useFetch<User>(CURRENT_USER_URL, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token.value}`,
-    },
-    immediate: !!token.value && !currentUser.value,
-  }).then(({ data, status }) => {
+  const fetchCurrentUser = async () => {
+    const { data, error, status } = await useAsyncData<User>(() =>
+      $fetch(CURRENT_USER_URL, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token.value}`,
+        },
+      })
+    );
+
     if (status.value === "success" && data.value) {
       setCurrentUser(data.value);
     }
-  });
+
+    return { data, error, status };
+  };
+
+  if (token.value && !currentUser.value) {
+    fetchCurrentUser();
+  }
 
   const isAuthenticated = computed(() => !!currentUser.value);
+
+  const isAdmin = computed(() => currentUser.value?.role === "ADMIN");
 
   return {
     token,
@@ -106,5 +120,7 @@ export const useAuthStore = defineStore(STORE_KEY, () => {
     signIn,
     signUp,
     isAuthenticated,
+    fetchCurrentUser,
+    isAdmin,
   };
 });

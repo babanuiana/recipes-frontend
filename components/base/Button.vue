@@ -1,5 +1,5 @@
 <template>
-  <button :class="['button', variant, size]" :disabled="disabled">
+  <button :class="['button', variant, size]" :type="type" :disabled="disabled">
     <BaseTypography :variant="textVariant" :color="textColor">
       <slot />
     </BaseTypography>

@@ -1,5 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      CLOUDINARY_API_KEY: process.env.NUXT_PUBLIC_CLOUDINARY_API_KEY,
+      BASE_URL: process.env.NUXT_PUBLIC_BASE_URL,
+    },
+  },
   devtools: { enabled: true },
   vite: {
     css: {

@@ -72,7 +72,7 @@
                   color="neutral-08"
                   class="ingredient-quantity"
                 >
-                  {{ ` — ${ingredient.quantity} ${ingredient.unit}` }}
+                  {{ ` — ${ingredient.quantity} ${ingredient.unit || ""}` }}
                 </BaseTypography>
               </li>
             </ul>
@@ -120,15 +120,13 @@ import type { Recipe } from "~/types/recipe";
 
 const { params } = useRoute();
 const { token } = useAuthStore();
+const baseUrl = useBaseUrl();
 
-const { data, status } = useFetch<Recipe>(
-  `https://iana-recipes-bdbe797be68c.herokuapp.com/recipes/${params.id}`,
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-);
+const { data, status } = useFetch<Recipe>(`${baseUrl}/recipes/${params.id}`, {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
 
 const characteristicsText = computed(() =>
   [

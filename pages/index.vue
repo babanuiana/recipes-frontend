@@ -15,6 +15,12 @@
               Рецепты
             </BaseTypography>
             <div class="recipes-actions">
+              <BaseCircularIconButton
+                v-if="useAuthStore().isAdmin"
+                icon="ic:baseline-plus"
+                variant="primary"
+                @click="$router.push('/admin/add-recipe')"
+              />
               <!-- <BaseChip>
                 <template #icon><Icon name="ion:filter" /></template>
                 <span>Фильтр</span>
@@ -41,22 +47,20 @@ import type { Recipe } from "~/types/recipe";
 
 const route = useRoute();
 const { token } = useAuthStore();
+const baseUrl = useBaseUrl();
 
 const category = computed(
   () => route.query.category?.toString()?.toUpperCase()
 );
 
-const { data, status } = useFetch<Recipe[]>(
-  "https://iana-recipes-bdbe797be68c.herokuapp.com/recipes",
-  {
-    query: {
-      category,
-    },
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-);
+const { data, status } = useFetch<Recipe[]>(`${baseUrl}/recipes`, {
+  query: {
+    category,
+  },
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
 </script>
 
 <style lang="scss" scoped>

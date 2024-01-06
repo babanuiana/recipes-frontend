@@ -14,17 +14,20 @@
       v-bind="$attrs"
       :id="id"
       :value="modelValue"
-      :type="type"
-      :class="['input', { error: status === 'error', 'with-label': label }]"
-      @input="
-        $emit(
-          'update:modelValue',
-          type !== 'file'
-            ? ($event.target as HTMLInputElement)?.value
-            : ($event.target as HTMLInputElement)?.files?.[0]
-        )
-      "
+      :class="['typeahead', { error: status === 'error', 'with-label': label }]"
+      @input="handleInput"
     />
+    <div v-if="isOpen" class="typeahead-options">
+      <button
+        v-for="item in filteredItems"
+        :key="item"
+        type="button"
+        class="typeahead-option"
+        @click="handleSelect(item)"
+      >
+        {{ item }}
+      </button>
+    </div>
     <BaseTypography
       v-if="helperText && status !== 'error'"
       variant="body-02"
@@ -46,21 +49,43 @@ type Props = {
   label?: string;
   helperText?: string;
   status?: "default" | "error";
+  modelValue?: string;
   errorMessage?: string;
-  type?: "text" | "number" | "password" | "file" | "email";
-  modelValue?: string | number | File;
+  items: string[];
 };
 
-defineEmits(["update:modelValue"]);
+const emit = defineEmits(["update:modelValue"]);
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   modelValue: "",
   label: undefined,
   helperText: undefined,
   status: "default",
   errorMessage: undefined,
-  type: "text",
 });
+
+const isOpen = ref(false);
+
+const filteredItems = computed(() => {
+  return props.items.filter((item) =>
+    item.toLowerCase().includes(props.modelValue.toLowerCase())
+  );
+});
+
+const handleInput = (event: Event) => {
+  const { value } = event.target as HTMLInputElement;
+  emit("update:modelValue", value);
+  if (value.length > 0 && filteredItems.value.length > 0) {
+    isOpen.value = true;
+  } else {
+    isOpen.value = false;
+  }
+};
+
+const handleSelect = (item: string) => {
+  emit("update:modelValue", item);
+  isOpen.value = false;
+};
 </script>
 
 <style lang="scss" scoped>
@@ -71,7 +96,8 @@ withDefaults(defineProps<Props>(), {
   gap: $spacing-3;
 }
 
-.input {
+.typeahead {
+  position: relative;
   display: inline-flex;
   width: 100%;
   border-radius: 8px;
@@ -109,6 +135,36 @@ withDefaults(defineProps<Props>(), {
   position: absolute;
   top: $spacing-3;
   left: $spacing-3;
+  z-index: 1;
+}
+
+.typeahead-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: $color-shade-01;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.typeahead-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: $spacing-3;
+  background-color: $color-shade-01;
+  color: $color-shade-02;
+  font: $font-body-02;
+  border: none;
+  border-radius: 0;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $color-neutral-04;
+  }
 }
 
 .error-message-wrapper {

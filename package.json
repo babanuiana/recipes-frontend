@@ -9,7 +9,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
     "@nuxt/image": "^1.7.0",
@@ -17,10 +18,16 @@
     "pinia": "^2.1.7"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^1.6.1",
     "@nuxt/devtools": "latest",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/google-fonts": "^3.0.2",
+    "@nuxtjs/storybook": "^8.1.5",
+    "@storybook/addon-essentials": "^8.2.2",
+    "@storybook/addon-links": "^8.2.2",
+    "@storybook/vue3": "^8.2.2",
+    "@storybook/vue3-vite": "^8.2.2",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
@@ -31,6 +38,8 @@
     "sass": "^1.66.1",
     "typescript": "^5.2.2",
     "unplugin-auto-import": "^0.18.0",
+    "unplugin-vue-components": "^0.27.2",
+    "vite": "^5.3.3",
     "vitest": "^0.34.4",
     "vue": "^3.4.31",
     "vue-router": "^4.4.0"

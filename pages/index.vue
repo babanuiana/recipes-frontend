@@ -49,8 +49,8 @@ const route = useRoute();
 const { token } = useAuthStore();
 const baseUrl = useBaseUrl();
 
-const category = computed(
-  () => route.query.category?.toString()?.toUpperCase()
+const category = computed(() =>
+  route.query.category?.toString()?.toUpperCase()
 );
 
 const { data, status } = useFetch<Recipe[]>(`${baseUrl}/recipes`, {

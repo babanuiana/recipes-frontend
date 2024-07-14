@@ -6,7 +6,9 @@ export default defineNuxtConfig({
       BASE_URL: process.env.NUXT_PUBLIC_BASE_URL,
     },
   },
+
   devtools: { enabled: true },
+
   vite: {
     css: {
       preprocessorOptions: {
@@ -16,21 +18,27 @@ export default defineNuxtConfig({
       },
     },
   },
+
   app: {
     head: {
       title: "Recipes",
     },
   },
+
   css: ["~/assets/styles/reset.scss"],
+
+  eslint: {
+    lintOnStart: false,
+  },
+
   modules: [
     "@nuxtjs/eslint-module",
     "@nuxt/image",
     "@pinia/nuxt",
     "@nuxtjs/google-fonts",
     "nuxt-icon",
-    "@pinia/nuxt",
-    "@nuxt/image",
   ],
+
   googleFonts: {
     families: {
       Onest: {
@@ -38,9 +46,12 @@ export default defineNuxtConfig({
       },
     },
   },
+
   image: {
     cloudinary: {
       baseURL: "https://res.cloudinary.com/denisveleaev/image/upload/",
     },
   },
+
+  compatibilityDate: "2024-07-14",
 });

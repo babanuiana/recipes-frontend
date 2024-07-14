@@ -1,8 +1,7 @@
 import { useAuthStore } from "~/stores/auth";
 
 export default defineNuxtRouteMiddleware(async (to) => {
-  const { isAuthenticated, token, isAdmin, fetchCurrentUser } =
-    useAuthStore();
+  const { isAuthenticated, token, isAdmin, fetchCurrentUser } = useAuthStore();
 
   if ((!token || (isAuthenticated && !isAdmin)) && to.path !== "/") {
     return navigateTo("/");

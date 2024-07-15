@@ -1,8 +1,8 @@
 <template>
   <Teleport to="body">
     <div class="backdrop"></div>
-    <div class="modal-container" @click="$emit('close')">
-      <div :class="['modal', size]" role="dialog" aria-modal="true" @click.stop>
+    <div class="modal-container">
+      <div :class="['modal', size]" role="dialog" aria-modal="true">
         <header class="header">
           <div class="header-content">
             <BaseTypography v-if="$slots.header" variant="body-02-medium">

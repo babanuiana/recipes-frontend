@@ -37,7 +37,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxtjs/google-fonts",
     "nuxt-icon",
-    "@nuxtjs/storybook"
+    "@nuxtjs/storybook",
   ],
 
   googleFonts: {

@@ -12,8 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import BaseTypography from "@/components/base/Typography.vue";
-
 type Props = {
   href?: string;
   variant:

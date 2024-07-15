@@ -6,33 +6,8 @@ const variants = ["primary", "secondary", "tertiary"];
 const sizes = ["small", "full-width"];
 
 const meta: Meta<typeof Button> = {
-  title: "Components/Button",
+  title: "Base/BaseButton",
   component: Button,
-  argTypes: {
-    variant: {
-      control: {
-        type: "radio",
-        options: variants,
-      },
-    },
-    size: {
-      control: {
-        type: "radio",
-        options: sizes,
-      },
-    },
-    disabled: {
-      control: {
-        type: "boolean",
-      },
-    },
-    type: {
-      control: {
-        type: "radio",
-        options: ["button", "submit", "reset"],
-      },
-    },
-  },
   args: {
     variant: "primary",
     size: "small",

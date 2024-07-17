@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 type Props = {
-  variant?: "primary" | "secondary" | "tertiary" | "quaternary";
+  variant?: "primary" | "secondary" | "tertiary" | "quaternary" | "quinary";
   icon: string;
   size?: "small" | "medium" | "large";
 };
@@ -108,6 +108,17 @@ const iconSize = computed(() => {
 
   &:active {
     background-color: $color-neutral-04;
+  }
+}
+
+.quinary {
+  background-color: $color-shade-01;
+  color: $color-primary-01;
+  border: 1px solid $color-primary-01;
+
+  &:hover {
+    background-color: $color-primary-01;
+    color: $color-shade-01;
   }
 }
 </style>

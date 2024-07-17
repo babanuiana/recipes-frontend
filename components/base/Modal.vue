@@ -60,6 +60,8 @@ withDefaults(defineProps<Props>(), {
 }
 
 .modal {
+  display: flex;
+  flex-direction: column;
   background-color: $color-shade-01;
   border-radius: 12px;
   box-shadow: $elevation-01;
@@ -91,6 +93,7 @@ withDefaults(defineProps<Props>(), {
 }
 
 .content {
+  flex: 1;
   padding: $spacing-6;
 }
 

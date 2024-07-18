@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AuthButton: typeof import('./components/auth/Button.vue')['default']
+    AuthProfile: typeof import('./components/auth/Profile.vue')['default']
     AuthSignInModal: typeof import('./components/auth/SignInModal.vue')['default']
     AuthSignUpModal: typeof import('./components/auth/SignUpModal.vue')['default']
     BaseButton: typeof import('./components/base/Button.vue')['default']

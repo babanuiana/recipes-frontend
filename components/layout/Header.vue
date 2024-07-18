@@ -10,6 +10,7 @@
         </NuxtLink>
         <div class="actions">
           <AuthButton v-if="!authStore.isAuthenticated" />
+          <AuthProfile v-else :user-name="userName"/>
         </div>
       </div>
     </LayoutContainer>
@@ -24,6 +25,7 @@
 import { useAuthStore } from "~/stores/auth";
 
 const authStore = useAuthStore();
+const userName = authStore.currentUser?.name;
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 <template>
-  <NuxtLink :to="`/recipes/${recipe.id}`" class="link">
-    <div class="wrapper">
+  <div class="wrapper">
+    <NuxtLink :to="`/recipes/${recipe.id}`" class="link">
       <div class="image-wrapper">
         <ImageCloudinary
           :src="recipe.imageUri"
@@ -14,16 +14,38 @@
         <BaseTypography variant="body-02-semibold" tag="h2" class="name">{{
           recipe.name
         }}</BaseTypography>
-        <BaseTypography variant="body-04" color="neutral-08">{{
-          characteristicsText
-        }}</BaseTypography>
+        <BaseTypography
+          variant="body-04"
+          color="neutral-08"
+          class="ingredients"
+          >{{ characteristicsText }}</BaseTypography
+        >
       </div>
-    </div>
-  </NuxtLink>
+    </NuxtLink>
+    <BaseCircularIconButton
+      v-if="authStore.isAuthenticated"
+      icon="ph:trash"
+      size="small"
+      variant="quinary"
+      class="delete-button"
+      @click="openModal = 'delete-recipe'"
+    />
+    <RecipesListDeleteRecipeModal
+      v-if="openModal === 'delete-recipe'"
+      :id="recipe.id"
+      :name="recipe.name"
+      @close="openModal = null"
+      @click-sign-in="openModal = 'delete-recipe'"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
 import type { Recipe } from "~/types/recipe";
+import { useAuthStore } from "~/stores/auth";
+const authStore = useAuthStore();
+
+const openModal = ref<"delete-recipe" | null>(null);
 
 const props = defineProps<{
   recipe: Recipe;
@@ -50,8 +72,11 @@ const characteristicsText = computed(() =>
     text-decoration: underline;
   }
 }
-
+.ingredients {
+  text-decoration: none;
+}
 .wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
 }
@@ -59,10 +84,14 @@ const characteristicsText = computed(() =>
 .image {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 }
-
+.delete-button {
+  position: absolute;
+  top: 158px;
+  right: $spacing-2;
+  z-index: 1;
+}
 .image-wrapper {
   display: flex;
   justify-content: center;
@@ -71,10 +100,10 @@ const characteristicsText = computed(() =>
   height: 200px;
   overflow: hidden;
   border-radius: 12px;
-  margin-bottom: $spacing-4;
 }
 
 .content {
+  margin-top: $spacing-4;
   display: flex;
   flex-direction: column;
   gap: $spacing-0_5;

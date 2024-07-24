@@ -11,6 +11,7 @@ declare module 'vue' {
     AuthSignInModal: typeof import('./components/auth/SignInModal.vue')['default']
     AuthSignUpModal: typeof import('./components/auth/SignUpModal.vue')['default']
     BaseButton: typeof import('./components/base/Button.vue')['default']
+    BaseCheckbox: typeof import('./components/base/Checkbox.vue')['default']
     BaseChip: typeof import('./components/base/Chip.vue')['default']
     BaseCircularIconButton: typeof import('./components/base/CircularIconButton.vue')['default']
     BaseDivider: typeof import('./components/base/Divider.vue')['default']

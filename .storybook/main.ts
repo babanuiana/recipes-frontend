@@ -8,12 +8,12 @@ module.exports = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@chromatic-com/storybook"
+    "@chromatic-com/storybook",
   ],
 
   framework: {
     name: "@storybook/vue3-vite",
-    options: {}
+    options: {},
   },
 
   async viteFinal(config) {
@@ -24,5 +24,5 @@ module.exports = {
     return mergeConfig(config, userConfig);
   },
 
-  docs: {}
+  docs: {},
 };

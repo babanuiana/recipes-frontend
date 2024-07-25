@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AuthButton: typeof import('./components/auth/Button.vue')['default']
+    AuthDeleteRecipeButton: typeof import('./components/auth/DeleteRecipeButton.vue')['default']
     AuthProfile: typeof import('./components/auth/Profile.vue')['default']
     AuthSignInModal: typeof import('./components/auth/SignInModal.vue')['default']
     AuthSignUpModal: typeof import('./components/auth/SignUpModal.vue')['default']
@@ -41,6 +42,8 @@ declare module 'vue' {
     LayoutHeader: typeof import('./components/layout/Header.vue')['default']
     LayoutPageLoader: typeof import('./components/layout/PageLoader.vue')['default']
     RecipeDetailsHeroImage: typeof import('./components/recipe-details/HeroImage.vue')['default']
+    RecipesListDeleteRecipe: typeof import('./components/recipes-list/DeleteRecipe.vue')['default']
+    RecipesListDeleteRecipeModal: typeof import('./components/recipes-list/DeleteRecipeModal.vue')['default']
     RecipesListFilterModal: typeof import('./components/recipes-list/filter-modal.vue')['default']
     RecipesListGrid: typeof import('./components/recipes-list/Grid.vue')['default']
     RecipesListItem: typeof import('./components/recipes-list/Item.vue')['default']

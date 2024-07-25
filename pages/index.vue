@@ -53,7 +53,7 @@ const category = computed(() =>
   route.query.category?.toString()?.toUpperCase()
 );
 
-const { data, status } = useFetch<Recipe[]>(`${baseUrl}/recipes`, {
+const { data, status, refresh } = useFetch<Recipe[]>(`${baseUrl}/recipes`, {
   query: {
     category,
   },
@@ -61,6 +61,8 @@ const { data, status } = useFetch<Recipe[]>(`${baseUrl}/recipes`, {
     Authorization: `Bearer ${token}`,
   },
 });
+
+provide("refreshData", refresh);
 </script>
 
 <style lang="scss" scoped>

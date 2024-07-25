@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 useHead(() => ({
-  title: "Recipes test title",
+  title: "Recipes",
 }));
 </script>
 

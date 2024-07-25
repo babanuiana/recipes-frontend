@@ -10,7 +10,7 @@
         </NuxtLink>
         <div class="actions">
           <AuthButton v-if="!authStore.isAuthenticated" />
-          <AuthProfile v-else :user-name="userName"/>
+          <AuthProfile v-else :user-name="userName" />
         </div>
       </div>
     </LayoutContainer>

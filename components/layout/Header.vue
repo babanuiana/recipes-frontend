@@ -42,6 +42,7 @@ const userName = authStore.currentUser?.name;
   top: 0;
   left: 0;
   z-index: 10;
+  user-select: none;
 }
 
 .content {

@@ -9,6 +9,12 @@
           >
         </NuxtLink>
         <div class="actions">
+          <NuxtLink class="logo" to="/shopping-list">
+            <BaseCircularIconButton
+              icon="solar:bill-list-linear"
+              size="small"
+              variant="primary"
+          /></NuxtLink>
           <AuthButton v-if="!authStore.isAuthenticated" />
           <AuthProfile v-else :user-name="userName" />
         </div>

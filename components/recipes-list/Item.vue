@@ -100,6 +100,7 @@ const characteristicsText = computed(() =>
   height: 200px;
   overflow: hidden;
   border-radius: 12px;
+  user-select: none;
 }
 
 .content {

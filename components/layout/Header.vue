@@ -9,6 +9,12 @@
           >
         </NuxtLink>
         <div class="actions">
+          <NuxtLink class="logo" to="/shopping-list">
+            <BaseCircularIconButton
+              icon="solar:bill-list-linear"
+              size="small"
+              variant="primary"
+          /></NuxtLink>
           <AuthButton v-if="!authStore.isAuthenticated" />
           <AuthProfile v-else :user-name="userName" />
         </div>
@@ -36,6 +42,7 @@ const userName = authStore.currentUser?.name;
   top: 0;
   left: 0;
   z-index: 10;
+  user-select: none;
 }
 
 .content {

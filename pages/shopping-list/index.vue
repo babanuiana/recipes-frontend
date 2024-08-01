@@ -5,35 +5,23 @@
     </LayoutHeader>
     <main class="content-container">
       <LayoutContainer>
-        <!-- <h1>Shopping List</h1> -->
-        <div class="input-content">
-          <!-- <BaseCheckbox v-model="isAllChecked" @change="handleAllCheck" /> -->
-
-          <div class="add-item-wrapper">
-            <BaseInput
-              id="ingredient"
-              class="ingredient-input"
-              label="Ingredient"
-              type="text"
-              v-model="newItem"
-            />
-            <BaseCircularIconButton
-              icon="material-symbols:add"
-              size="small"
+        <div class="centered-container">
+          <div class="delete-all-wrapper">
+            <BaseTypography class="add-to-list" variant="body-02-semibold">
+              Список покупок
+            </BaseTypography>
+            <BaseButton
+              class="delete-all-button"
               variant="tertiary"
-              @click="handleAddItem"
-              :disabled="!newItem"
-            />
+              size="small"
+              >Удалить все</BaseButton
+            >
           </div>
-          <div>
-            <ul>
-              <li v-for="item in shoppingList" :key="item.id">
-                <span :class="{ purchased: item.isPurchased }">{{
-                  item.text
-                }}</span>
-              </li>
-            </ul>
-          </div>
+          <ShoppingList class="shopping-list" :shoppingList="shoppingList" />
+          <BaseTypography class="add-to-list" variant="body-03-semibold">
+            Добавить в список
+          </BaseTypography>
+          <ShoppingListAddItemField />
         </div>
       </LayoutContainer>
     </main>
@@ -50,13 +38,6 @@ onMounted(() => {
   shoppingListStore.addSampleItems();
 });
 const shoppingList = computed(() => shoppingListStore.shoppingList);
-const newItem = ref("");
-
-const handleAddItem = () => {
-  shoppingListStore.addItem(newItem.value);
-  // Clear the input field
-  newItem.value = "";
-};
 </script>
 
 <style lang="scss" scoped>
@@ -67,7 +48,13 @@ const handleAddItem = () => {
     padding: 0 0 $spacing-12;
   }
 }
-
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+}
 .ingredient-input {
   width: 50%;
 }
@@ -76,26 +63,19 @@ const handleAddItem = () => {
   gap: $spacing-5;
   align-items: center;
 }
-.input-content {
+.delete-all-wrapper {
   display: flex;
-  gap: $spacing-5;
-  align-items: left;
-  flex-direction: column;
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  li {
-    display: flex;
-    align-items: center;
-    gap: $spacing-3;
-  }
-
-  .purchased {
-    text-decoration: line-through;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .button {
+    padding: $spacing-2 $spacing-6;
+    border-radius: 30px;
   }
 }
+.shopping-list {
+  margin: $spacing-8 0 $spacing-8 0;
+  width: 100%;
+}
+
 </style>

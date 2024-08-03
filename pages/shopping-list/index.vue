@@ -35,7 +35,7 @@ useHead(() => ({
 }));
 const shoppingListStore = useShoppingListStore();
 onMounted(() => {
-  shoppingListStore.addSampleItems();
+  shoppingListStore.loadList();
 });
 const shoppingList = computed(() => shoppingListStore.shoppingList);
 </script>
@@ -77,5 +77,4 @@ const shoppingList = computed(() => shoppingListStore.shoppingList);
   margin: $spacing-8 0 $spacing-8 0;
   width: 100%;
 }
-
 </style>

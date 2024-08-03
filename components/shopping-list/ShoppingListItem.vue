@@ -2,8 +2,10 @@
   <li>
     <div class="list-item-wrapper">
       <div class="checkbox-wrapper">
-        <BaseCheckbox v-model="isAllChecked" @change="handleAllCheck" />
-
+        <BaseCheckbox
+          :modelValue="item.isPurchased"
+          @update:model-value="handleToggle"
+        />
         <BaseTypography
           class="text-wrapper"
           :class="{ purchased: item.isPurchased }"
@@ -17,13 +19,14 @@
         <BaseCircularIconButton
           icon="bytesize:edit"
           size="small"
-          variant="primary"
+          variant="quaternary"
         />
+
         <BaseCircularIconButton
           class="delete-button"
           icon="material-symbols-light:delete-outline"
           size="small"
-          variant="tertiary"
+          variant="quinary"
         />
       </div>
     </div>
@@ -31,11 +34,17 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  item: Object;
-}>();
+import { useShoppingListStore } from "~/stores/shoppingList";
+import { type ShoppingItem } from "~/stores/shoppingList";
 
-console.log(props);
+const props = defineProps<{
+  item: ShoppingItem;
+}>();
+const shoppingListStore = useShoppingListStore();
+
+const handleToggle = () => {
+  shoppingListStore.toggleItem(props.item.id);
+};
 </script>
 <style lang="scss" scoped>
 .content-container {
@@ -78,6 +87,7 @@ li {
   flex-wrap: nowrap;
 }
 .delete-button {
+  border: none;
   margin-left: $spacing-3;
 }
 </style>

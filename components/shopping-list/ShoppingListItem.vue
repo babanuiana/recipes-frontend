@@ -76,10 +76,15 @@ li {
 }
 
 .text-wrapper {
+  width: 400px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-left: $spacing-3;
+
+  @media screen and (max-width: $small-screen) {
+    width: 200px;
+  }
 }
 .checkbox-wrapper {
   display: flex;

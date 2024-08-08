@@ -21,12 +21,17 @@ withDefaults(defineProps<Props>(), {
   userName: "",
 });
 </script>
-<style Lang="scss" scoped>
+
+<style lang="scss" scoped>
 .wrapper {
   display: flex;
   align-items: center;
-  .profile-name {
-    margin-right: 8px;
+}
+.profile-name {
+  margin-right: 8px;
+
+  @media screen and (max-width: $small-screen) {
+    display: none;
   }
 }
 </style>

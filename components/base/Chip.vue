@@ -1,7 +1,7 @@
 <template>
   <button class="chip" type="button">
     <slot name="icon" />
-    <BaseTypography variant="body-03-semibold">
+    <BaseTypography tag="span" variant="body-03-semibold">
       <slot />
     </BaseTypography>
   </button>

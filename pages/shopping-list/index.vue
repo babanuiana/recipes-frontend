@@ -10,12 +10,12 @@
             <BaseTypography class="add-to-list" variant="body-01-semibold">
               Список покупок
             </BaseTypography>
-            <BaseButton
-              class="delete-all-button"
-              variant="tertiary"
+            <BaseCircularIconButton
+              class="delete-all-button-mobile"
+              icon="material-symbols:delete-sweep-outline"
               size="small"
-              >Удалить все</BaseButton
-            >
+              variant="primary"
+            />
           </div>
           <ShoppingList class="shopping-list" :shoppingList="shoppingList" />
           <BaseTypography class="add-to-list" variant="body-03-semibold">
@@ -52,7 +52,8 @@ const shoppingList = computed(() => shoppingListStore.shoppingList);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%;
+  width: 640px;
+  max-width: 100%;
   margin: 0 auto;
 
   @media screen and (max-width: $small-screen) {
@@ -74,10 +75,6 @@ const shoppingList = computed(() => shoppingListStore.shoppingList);
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  .button {
-    padding: $spacing-2 $spacing-6;
-    border-radius: 30px;
-  }
 }
 .shopping-list {
   margin: $spacing-8 0 $spacing-8 0;

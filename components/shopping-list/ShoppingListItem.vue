@@ -24,7 +24,7 @@
 
         <BaseCircularIconButton
           class="delete-button"
-          icon="material-symbols-light:delete-outline"
+          icon="ph:trash-bold"
           size="small"
           variant="quinary"
         />
@@ -55,10 +55,6 @@ const handleToggle = () => {
   }
 }
 
-.ingredient-input {
-  width: 50%;
-}
-
 li {
   display: flex;
   align-items: center;
@@ -77,9 +73,6 @@ li {
 
 .text-wrapper {
   width: 400px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   margin-left: $spacing-3;
 
   @media screen and (max-width: $small-screen) {

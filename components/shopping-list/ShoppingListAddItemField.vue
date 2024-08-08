@@ -9,6 +9,7 @@
         v-model="newItem"
       />
       <BaseCircularIconButton
+        class="add-icon"
         icon="material-symbols:add"
         size="small"
         variant="tertiary"
@@ -39,5 +40,8 @@ const handleAddItem = () => {
   gap: $spacing-5;
   align-items: center;
   width: 100%;
+}
+.add-icon {
+  flex-shrink: 0;
 }
 </style>

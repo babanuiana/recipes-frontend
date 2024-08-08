@@ -7,7 +7,7 @@
       <LayoutContainer>
         <div class="centered-container">
           <div class="delete-all-wrapper">
-            <BaseTypography class="add-to-list" variant="body-02-semibold">
+            <BaseTypography class="add-to-list" variant="body-01-semibold">
               Список покупок
             </BaseTypography>
             <BaseButton
@@ -54,6 +54,12 @@ const shoppingList = computed(() => shoppingListStore.shoppingList);
   justify-content: center;
   width: 50%;
   margin: 0 auto;
+
+  @media screen and (max-width: $small-screen) {
+    align-self: stretch;
+    width: 100%;
+    padding: $spacing-8 0 $spacing-16;
+  }
 }
 .ingredient-input {
   width: 50%;

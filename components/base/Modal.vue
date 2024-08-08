@@ -95,6 +95,9 @@ withDefaults(defineProps<Props>(), {
 .content {
   flex: 1;
   padding: $spacing-6;
+  @media screen and (max-width: $small-screen) {
+    display: flex;
+  }
 }
 
 @media screen and (max-width: $small-screen) {

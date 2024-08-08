@@ -5,7 +5,7 @@
         Удалить рецепт?
       </BaseTypography></template
     >
-    <div class="content">
+    <div class="delete-content">
       <BaseTypography variant="body-01-semibold">
         Вы уверенны что хотите удалить "{{ name }}"?
       </BaseTypography>
@@ -61,16 +61,27 @@ const handleDelete = () => {
 </script>
 
 <style lang="scss" scoped>
-.content {
+.delete-content {
   display: flex;
   flex-direction: column;
   gap: $spacing-5;
+  @media screen and (max-width: $small-screen) {
+    flex: 1;
+    justify-content: space-between;
+  }
 }
 .buttons-wrapper {
   display: flex;
   justify-content: flex-end;
+
+  @media screen and (max-width: $small-screen) {
+    flex-direction: column;
+  }
 }
 .delete-button {
   margin-left: $spacing-4;
+  @media screen and (max-width: $small-screen) {
+    margin: $spacing-4 0;
+  }
 }
 </style>

@@ -40,6 +40,12 @@ export const useShoppingListStore = defineStore("shoppingList", {
         isPurchased: false,
       });
     },
+    removeItem(id: string) {
+      this.shoppingList = this.shoppingList.filter((item) => item.id !== id);
+    },
+    deleteAllItems() {
+      this.shoppingList = [];
+    },
     toggleItem(id: string) {
       const item = this.shoppingList.find((item) => item.id === id);
       if (item) item.isPurchased = !item.isPurchased;

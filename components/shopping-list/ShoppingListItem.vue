@@ -27,6 +27,7 @@
           icon="ph:trash-bold"
           size="small"
           variant="quinary"
+          @click="() => shoppingListStore.removeItem(item.id)"
         />
       </div>
     </div>

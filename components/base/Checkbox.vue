@@ -1,12 +1,12 @@
 <template>
   <label class="checkbox">
-    <input class="checkbox-input" type="checkbox" v-model="model" />
+    <input class="checkbox-input" type="checkbox" v-model="checkboxState" />
     <span class="checkmark" />
   </label>
 </template>
 
 <script setup lang="ts">
-const model = defineModel<boolean>();
+const checkboxState = defineModel<boolean>();
 </script>
 
 <style scoped lang="scss">

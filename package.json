@@ -25,6 +25,7 @@
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/google-fonts": "^3.0.2",
     "@nuxtjs/storybook": "^8.1.5",
+    "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
     "@storybook/addon-essentials": "^8.2.2",
     "@storybook/addon-links": "^8.2.2",
     "@storybook/vue3": "^8.2.2",

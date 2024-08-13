@@ -40,6 +40,7 @@ export default defineNuxtConfig({
     "@nuxtjs/storybook",
     "@pinia/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
+    "@vueuse/nuxt",
   ],
 
   googleFonts: {

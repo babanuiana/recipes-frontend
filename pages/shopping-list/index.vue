@@ -15,6 +15,7 @@
               icon="material-symbols:delete-sweep-outline"
               size="small"
               variant="primary"
+              @click="shoppingListStore.deleteAllItems"
             />
           </div>
           <ShoppingList class="shopping-list" :shoppingList="shoppingList" />

@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" ref="target">
     <div class="label-wrapper">
       <BaseTypography
         v-if="label"
@@ -53,6 +53,9 @@ type Props = {
   errorMessage?: string;
   items: string[];
 };
+
+const target = ref(null);
+onClickOutside(target, () => (isOpen.value = false));
 
 const emit = defineEmits(["update:modelValue"]);
 

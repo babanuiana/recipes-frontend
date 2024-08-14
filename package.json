@@ -30,6 +30,8 @@
     "@storybook/addon-links": "^8.2.2",
     "@storybook/vue3": "^8.2.2",
     "@storybook/vue3-vite": "^8.2.2",
+    "@vueuse/core": "^10.11.1",
+    "@vueuse/nuxt": "^10.11.1",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",

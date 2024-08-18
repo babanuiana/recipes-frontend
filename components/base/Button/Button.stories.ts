@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
+import BaseTypography from "../Typography/Typography.vue";
 import Button from "./Button.vue";
-import BaseTypography from "./Typography.vue";
 
 const variants = ["primary", "secondary", "tertiary"];
 const sizes = ["small", "full-width"];

@@ -25,6 +25,11 @@
 </template>
 
 <script setup lang="ts">
+// Added explicit import because of the Storybook issue
+import BaseTypography from "../Typography/Typography.vue";
+import BaseDivider from "../Divider/Divider.vue";
+import BaseCircularIconButton from "../CircularIconButton/CircularIconButton.vue";
+
 type Props = {
   size?: "small" | "medium" | "large";
 };

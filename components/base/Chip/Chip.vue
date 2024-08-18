@@ -7,6 +7,11 @@
   </button>
 </template>
 
+<script setup lang="ts">
+// Added explicit import because of the Storybook issue
+import BaseTypography from "../Typography/Typography.vue";
+</script>
+
 <style lang="scss" scoped>
 .chip {
   display: flex;

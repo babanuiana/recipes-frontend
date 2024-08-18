@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 
+import BaseTypography from "../Typography/Typography.vue";
 import BaseLink from "./Link.vue";
-import BaseTypography from "./Typography.vue";
 
 const meta: Meta<typeof BaseLink> = {
   title: "Base/BaseLink",

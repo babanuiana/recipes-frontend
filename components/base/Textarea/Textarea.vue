@@ -10,16 +10,15 @@
         >{{ label }}</BaseTypography
       >
     </div>
-    <select
+    <textarea
       v-bind="$attrs"
       :id="id"
-      :class="['select', { error: status === 'error', 'with-label': label }]"
+      :value="modelValue"
+      :class="['textarea', { error: status === 'error', 'with-label': label }]"
       @input="
-        $emit('update:modelValue', ($event.target as HTMLSelectElement)?.value)
+        $emit('update:modelValue', ($event.target as HTMLInputElement)?.value)
       "
-    >
-      <slot />
-    </select>
+    />
     <BaseTypography
       v-if="helperText && status !== 'error'"
       variant="body-02"
@@ -36,12 +35,16 @@
 </template>
 
 <script setup lang="ts">
+// Added explicit import because of the Storybook issue
+import BaseTypography from "../Typography/Typography.vue";
+
 type Props = {
   id: string;
   label?: string;
   helperText?: string;
   status?: "default" | "error";
   errorMessage?: string;
+  modelValue?: string;
 };
 
 defineEmits(["update:modelValue"]);
@@ -63,11 +66,11 @@ withDefaults(defineProps<Props>(), {
   gap: $spacing-3;
 }
 
-.select {
+.textarea {
   display: inline-flex;
   width: 100%;
   border-radius: 8px;
-  padding: $spacing-4 $spacing-2;
+  padding: $spacing-4 $spacing-3;
   border: 1px solid $color-neutral-04;
   background-color: $color-shade-01;
   color: $color-shade-02;
@@ -77,6 +80,7 @@ withDefaults(defineProps<Props>(), {
     border-color 0.2s ease-in-out,
     border-color 0.2s ease-in-out;
   outline: none;
+  resize: vertical;
 
   &::placeholder {
     font: $font-body-02;

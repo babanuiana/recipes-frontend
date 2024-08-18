@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" :class="$props.class">
     <div class="label-wrapper">
       <BaseTypography
         v-if="label"
@@ -10,13 +10,19 @@
         >{{ label }}</BaseTypography
       >
     </div>
-    <textarea
+    <input
       v-bind="$attrs"
       :id="id"
       :value="modelValue"
-      :class="['textarea', { error: status === 'error', 'with-label': label }]"
+      :type="type"
+      :class="['input', { error: status === 'error', 'with-label': label }]"
       @input="
-        $emit('update:modelValue', ($event.target as HTMLInputElement)?.value)
+        $emit(
+          'update:modelValue',
+          type !== 'file'
+            ? ($event.target as HTMLInputElement)?.value
+            : ($event.target as HTMLInputElement)?.files?.[0]
+        )
       "
     />
     <BaseTypography
@@ -35,13 +41,18 @@
 </template>
 
 <script setup lang="ts">
+// Added explicit import because of the Storybook issue
+import BaseTypography from "../Typography/Typography.vue";
+
 type Props = {
   id: string;
   label?: string;
   helperText?: string;
   status?: "default" | "error";
   errorMessage?: string;
-  modelValue?: string;
+  type?: "text" | "number" | "password" | "file" | "email";
+  modelValue?: string | number | File;
+  class?: string | Array<any> | object;
 };
 
 defineEmits(["update:modelValue"]);
@@ -52,6 +63,12 @@ withDefaults(defineProps<Props>(), {
   helperText: undefined,
   status: "default",
   errorMessage: undefined,
+  type: "text",
+  class: undefined,
+});
+
+defineOptions({
+  inheritAttrs: false,
 });
 </script>
 
@@ -63,7 +80,7 @@ withDefaults(defineProps<Props>(), {
   gap: $spacing-3;
 }
 
-.textarea {
+.input {
   display: inline-flex;
   width: 100%;
   border-radius: 8px;
@@ -77,7 +94,6 @@ withDefaults(defineProps<Props>(), {
     border-color 0.2s ease-in-out,
     border-color 0.2s ease-in-out;
   outline: none;
-  resize: vertical;
 
   &::placeholder {
     font: $font-body-02;

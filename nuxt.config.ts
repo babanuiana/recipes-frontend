@@ -41,6 +41,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
     "@vueuse/nuxt",
+    "@nuxt/test-utils/module",
   ],
 
   googleFonts: {

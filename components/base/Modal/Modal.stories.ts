@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 
+import BaseTypography from "../Typography/Typography.vue";
+import BaseCircularIconButton from "../CircularIconButton/CircularIconButton.vue";
+import BaseDivider from "../Divider/Divider.vue";
 import BaseModal from "./Modal.vue";
-import BaseTypography from "./Typography.vue";
-import BaseCircularIconButton from "./CircularIconButton.vue";
-import BaseDivider from "./Divider.vue";
 
 const meta: Meta<typeof BaseModal> = {
   title: "Base/BaseModal",

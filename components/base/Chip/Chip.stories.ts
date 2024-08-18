@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 
+import BaseTypography from "../Typography/Typography.vue";
 import Chip from "./Chip.vue";
-import BaseTypography from "./Typography.vue";
 
 const meta: Meta<typeof Chip> = {
   title: "Base/BaseChip",

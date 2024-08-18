@@ -9,7 +9,6 @@ export default defineConfig({
     vue(),
     AutoImport({
       imports: ["vue", "vue-router"],
-      dirs: ["./composables"],
       vueTemplate: true,
     }),
     Components({
@@ -26,7 +25,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: '@use "~/assets/styles/_variables.scss" as *;',
+        additionalData: '@use "./assets/styles/_variables.scss" as *;',
       },
     },
   },

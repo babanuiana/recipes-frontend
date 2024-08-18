@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" :class="$props.class">
     <div class="label-wrapper">
       <BaseTypography
         v-if="label"
@@ -49,6 +49,7 @@ type Props = {
   errorMessage?: string;
   type?: "text" | "number" | "password" | "file" | "email";
   modelValue?: string | number | File;
+  class?: string | Array<any> | object;
 };
 
 defineEmits(["update:modelValue"]);
@@ -60,6 +61,7 @@ withDefaults(defineProps<Props>(), {
   status: "default",
   errorMessage: undefined,
   type: "text",
+  class: undefined,
 });
 
 defineOptions({

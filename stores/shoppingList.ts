@@ -20,17 +20,6 @@ export const useShoppingListStore = defineStore("shoppingList", {
     }),
   },
   actions: {
-    addSampleItems() {
-      this.shoppingList = [
-        { id: "1", text: "Milk", isPurchased: false },
-        { id: "2", text: "Bread", isPurchased: false },
-        { id: "3", text: "Eggs", isPurchased: false },
-        { id: "4", text: "Butter", isPurchased: false },
-      ];
-    },
-    loadList() {
-      return this.shoppingList;
-    },
     addItem(text: string) {
       if (text.trim() === "") return;
       const id = generateId();

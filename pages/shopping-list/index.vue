@@ -35,9 +35,6 @@ useHead(() => ({
   title: "Список покупок",
 }));
 const shoppingListStore = useShoppingListStore();
-onMounted(() => {
-  shoppingListStore.loadList();
-});
 const shoppingList = computed(() => shoppingListStore.shoppingList);
 </script>
 

@@ -18,7 +18,7 @@
               @click="shoppingListStore.deleteAllItems"
             />
           </div>
-          <ShoppingList class="shopping-list" :shoppingList="shoppingList" />
+          <ShoppingList class="shopping-list" :shopping-list="shoppingList" />
           <BaseTypography class="add-to-list" variant="body-03-semibold">
             Добавить в список
           </BaseTypography>

@@ -61,6 +61,10 @@ withDefaults(defineProps<Props>(), {
   errorMessage: undefined,
   type: "text",
 });
+
+defineOptions({
+  inheritAttrs: false,
+});
 </script>
 
 <style lang="scss" scoped>

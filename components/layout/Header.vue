@@ -9,6 +9,7 @@
           >
         </NuxtLink>
         <div class="actions">
+          <TranslationSwitch />
           <NuxtLink class="logo" to="/shopping-list">
             <BaseCircularIconButton
               icon="solar:bill-list-linear"

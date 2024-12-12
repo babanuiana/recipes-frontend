@@ -1,19 +1,28 @@
 <template>
   <BaseModal>
-    <template #header>Войдите в ваш аккаунт</template>
+    <template #header>{{
+      // Login to your account
+      $t("auth.loginToYourAccount")
+    }}</template>
     <form class="content" @submit.prevent="handleSubmit">
       <BaseTypography v-if="alertText" variant="body-05" color="error-01">
         {{ alertText }}
       </BaseTypography>
       <BaseTypography variant="heading-01-semibold">
-        Добро пожаловать!
+        {{
+          // Welcome
+          $t("auth.welcomeMessage")
+        }}
       </BaseTypography>
       <BaseInput
         id="sign-in-email"
         v-model="email"
         name="email"
         type="email"
-        placeholder="Ваш Email"
+        :placeholder="
+          // Your email
+          $t('auth.yourEmail')
+        "
       />
       <BaseInput
         id="sign-in-password"
@@ -23,17 +32,26 @@
         placeholder="********"
       />
       <BaseTypography variant="body-05">
-        Ещё не зарегистрированы?
-        <BaseLink type="button" variant="body-05" @click="$emit('clickSignUp')"
-          >Зарегистрироваться</BaseLink
-        >
+        {{
+          // Not registered yet
+          $t("auth.notRegisteredYet")
+        }}
+        <BaseLink type="button" variant="body-05" @click="$emit('clickSignUp')">
+          {{
+            // Register
+            $t("auth.register")
+          }}
+        </BaseLink>
       </BaseTypography>
       <BaseButton
         type="submit"
         variant="primary"
         size="full-width"
         :disabled="!email || !password"
-        >Войти</BaseButton
+        >{{
+          // Login
+          $t("auth.login")
+        }}</BaseButton
       >
     </form>
   </BaseModal>
@@ -41,13 +59,13 @@
 
 <script setup lang="ts">
 import { useAuthStore } from "~/stores/auth";
+
+const { t: $t } = useI18n();
 const authStore = useAuthStore();
 
 const isLoading = ref(false);
-
 const email = ref("");
 const password = ref("");
-
 const alertText = ref("");
 
 const emit = defineEmits(["loggedIn", "clickSignUp"]);
@@ -66,7 +84,8 @@ const handleSubmit = () => {
         `statusCode` in result.error.value &&
         result.error.value.statusCode === 401
       ) {
-        alertText.value = "Неверный email или пароль";
+        // Wrong email or password
+        alertText.value = $t("auth.wrongEmailOrPassword");
 
         return;
       }
@@ -76,8 +95,8 @@ const handleSubmit = () => {
 
         return;
       }
-
-      alertText.value = "Что-то пошло не так";
+      // Something went wrong
+      alertText.value = $t("auth.genericError");
     })
     .finally(() => {
       isLoading.value = false;

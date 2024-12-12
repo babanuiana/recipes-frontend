@@ -26,6 +26,7 @@
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/google-fonts": "^3.0.2",
+    "@nuxtjs/i18n": "^9.0.0-rc.2",
     "@nuxtjs/storybook": "^8.1.5",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
     "@pinia/testing": "^0.1.5",

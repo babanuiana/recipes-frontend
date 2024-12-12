@@ -16,11 +16,11 @@
       </div>
 
       <div>
-        <BaseCircularIconButton
+        <!-- <BaseCircularIconButton
           icon="bytesize:edit"
           size="small"
           variant="quaternary"
-        />
+        /> -->
 
         <BaseCircularIconButton
           class="delete-button"

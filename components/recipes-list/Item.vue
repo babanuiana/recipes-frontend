@@ -23,7 +23,7 @@
       </div>
     </NuxtLink>
     <BaseCircularIconButton
-      v-if="authStore.isAuthenticated"
+      v-if="authStore.isAdmin"
       icon="ph:trash"
       size="small"
       variant="quinary"

@@ -12,7 +12,7 @@
               variant="heading-01-semibold"
               class="heading"
             >
-              Рецепты
+              {{ $t("general.recipes") }}
             </BaseTypography>
             <div class="recipes-actions">
               <BaseCircularIconButton
@@ -42,9 +42,11 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import { useAuthStore } from "~/stores/auth";
 import type { Recipe } from "~/types/recipe";
 
+const { t: $t } = useI18n();
 const route = useRoute();
 const { token } = useAuthStore();
 const baseUrl = useBaseUrl();

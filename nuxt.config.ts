@@ -42,7 +42,17 @@ export default defineNuxtConfig({
     "@pinia-plugin-persistedstate/nuxt",
     "@vueuse/nuxt",
     "@nuxt/test-utils/module",
+    "@nuxtjs/i18n",
   ],
+  i18n: {
+    vueI18n: "./i18n.config.ts",
+    locales: [{ code: "en" }, { code: "ru" }],
+    strategy: "no_prefix",
+    detectBrowserLanguage: {
+      useCookie: true,
+      fallbackLocale: "en",
+    },
+  },
 
   googleFonts: {
     families: {

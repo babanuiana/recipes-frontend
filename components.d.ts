@@ -50,5 +50,6 @@ declare module 'vue' {
     ShoppingListShoppingList: typeof import('./components/shopping-list/ShoppingList.vue')['default']
     ShoppingListShoppingListAddItemField: typeof import('./components/shopping-list/ShoppingListAddItemField.vue')['default']
     ShoppingListShoppingListItem: typeof import('./components/shopping-list/ShoppingListItem.vue')['default']
+    TranslationSwitchTranslationSwitch: typeof import('./components/translation-switch/TranslationSwitch.vue')['default']
   }
 }

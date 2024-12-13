@@ -23,57 +23,66 @@ import SushiIcon from "./icon/sushi";
 import PizzaIcon from "./icon/pizza";
 
 const route = useRoute();
+const { t: $t } = useI18n();
 
-const CATEGORIES = [
+const CATEGORIES = computed(() => [
   {
+    // Salads
     id: 1,
-    title: "Салаты",
+    title: $t("categories.salads"),
     icon: SaladIcon,
     category: "salad",
   },
   {
+    // Sauces
     id: 2,
-    title: "Соусы",
+    title: $t("categories.sauces"),
     icon: SauceIcon,
     category: "sauce",
   },
   {
+    // Pasta
     id: 3,
-    title: "Паста",
+    title: $t("categories.pasta"),
     icon: PastaIcon,
     category: "pasta",
   },
   {
+    // Soups
     id: 4,
-    title: "Супы",
+    title: $t("categories.soups"),
     icon: SoupIcon,
     category: "soup",
   },
   {
+    // Appetizers
     id: 5,
-    title: "Закуски",
+    title: $t("categories.appetizers"),
     icon: AppetizerIcon,
     category: "appetizer",
   },
   {
+    // Mexican
     id: 6,
-    title: "Мексиканские",
+    title: $t("categories.mexican"),
     icon: MexicanIcon,
     category: "mexican",
   },
   {
+    // Sushi
     id: 7,
-    title: "Суши",
+    title: $t("categories.sushi"),
     icon: SushiIcon,
     category: "sushi",
   },
   {
+    // Pizza
     id: 8,
-    title: "Пицца",
+    title: $t("categories.pizza"),
     icon: PizzaIcon,
     category: "pizza",
   },
-];
+]);
 </script>
 
 <style lang="scss" scoped>

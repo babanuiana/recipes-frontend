@@ -125,5 +125,8 @@ defineOptions({
   align-items: center;
   gap: $spacing-2;
   color: $color-error-02;
+  svg {
+    flex-shrink: 0;
+  }
 }
 </style>

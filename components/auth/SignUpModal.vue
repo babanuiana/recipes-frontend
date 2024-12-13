@@ -18,9 +18,11 @@
       </BaseTypography>
       <BaseInput
         id="sign-up-email"
-        v-model="email"
+        v-model="v$.email.$model"
         name="email"
         type="email"
+        :status="v$.email.$error ? 'error' : 'default'"
+        :error-message="v$.email.$errors[0]?.$message?.toString()"
         :placeholder="
           // Your email
           $t('auth.yourEmail')
@@ -28,8 +30,10 @@
       />
       <BaseInput
         id="sign-up-name"
-        v-model="name"
+        v-model="v$.name.$model"
         name="name"
+        :status="v$.name.$error ? 'error' : 'default'"
+        :error-message="v$.name.$errors[0]?.$message?.toString()"
         :placeholder="
           // Your name
           $t('auth.yourName')
@@ -37,8 +41,10 @@
       />
       <BaseInput
         id="sign-up-password"
-        v-model="password"
+        v-model="v$.password.$model"
         name="password"
+        :status="v$.password.$error ? 'error' : 'default'"
+        :error-message="v$.password.$errors[0]?.$message?.toString()"
         type="password"
         placeholder="********"
       />
@@ -58,7 +64,7 @@
         type="submit"
         variant="primary"
         size="full-width"
-        :disabled="!email || !password || !name || isLoading"
+        :disabled="v$.$invalid || isLoading"
       >
         {{
           // Register
@@ -70,6 +76,12 @@
 </template>
 
 <script setup lang="ts">
+import { useVuelidate } from "@vuelidate/core";
+import {
+  required,
+  email as emailValidator,
+  helpers,
+} from "@vuelidate/validators";
 import { useAuthStore } from "~/stores/auth";
 
 const { t: $t } = useI18n();
@@ -77,9 +89,27 @@ const authStore = useAuthStore();
 
 const isLoading = ref(false);
 
-const email = ref("");
-const name = ref("");
-const password = ref("");
+const formFields = ref({ email: "", name: "", password: "" });
+const { email, name, password } = toRefs(formFields.value);
+
+const rules = {
+  email: {
+    required: helpers.withMessage(() => $t("auth.emailRequired"), required),
+    email: helpers.withMessage(() => $t("auth.emailInvalid"), emailValidator),
+  },
+  name: {
+    required: helpers.withMessage(() => $t("auth.nameRequired"), required),
+  },
+  password: {
+    required: helpers.withMessage(() => $t("auth.passwordRequired"), required),
+    valid: helpers.withMessage(
+      () => $t("auth.passwordInvalid"),
+      validatePassword
+    ),
+  },
+};
+
+const v$ = useVuelidate(rules, formFields);
 
 const alertText = ref("");
 
